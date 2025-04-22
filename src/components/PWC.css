@@ -1,0 +1,265 @@
+.pwc-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.background-video-pwc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;   /* Changed */
+    height: 100%;  /* Changed */
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.8); /* Darken video for better contrast */
+}
+
+
+.overlay-content-pwc {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #cdbe16;
+    padding: 20px;
+
+    /* Add this line to shift to the left */
+    transform: translateX(-220px); /* Adjust -30px as needed */
+}
+
+
+.coin-display {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.title {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.bingo-letters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.bingo-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px 10px;
+    border-bottom: 2px solid #fff;
+}
+
+.bingo-letter.crossed {
+    text-decoration: line-through;
+    color: rgb(238, 255, 0); /* red text color */
+    border-color: rgb(60, 255, 0);
+    text-shadow: 0 0 8px #ff0000, 0 0 16px #ff0000;
+    transition: all 0.5s ease;
+}
+
+
+.turn-indicator h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.player-turn {
+    color: #0f0;
+}
+
+.computer-turn {
+    color: rgb(255, 19, 19);
+}
+
+.bingo-card {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.bingo-cell {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bingo-cell:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.bingo-cell.player-selected {
+    background-color: rgba(0, 255, 0, 0.6);
+}
+
+.bingo-cell.computer-selected {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.result-with-coins {
+    text-align: center;
+    color: #fff;
+}
+
+.result {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.flying-coins-container {
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.flying-coin {
+    width: 20px;
+    height: 20px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.flying-coin.animate {
+    animation: flyCoin 1s forwards;
+}
+.winner-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* So it doesn't block other interactions */
+    animation: fadeIn 1s ease-out;
+}
+
+.winner-text {
+    font-size: 80px;
+    color: #FFD700; /* Gold */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: popIn 0.5s ease-out forwards, pulse 1s infinite;
+}
+
+.winner-gif {
+    width: 400px; /* adjust size as needed */
+    height: auto;
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+@keyframes flyCoin {
+    0% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x-dest), var(--y-dest));
+        opacity: 0;
+    }
+}
+.loser-overlay {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 20px 40px;
+    text-align: center;
+    z-index: 5;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.loser-text {
+    font-size: 3rem;
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+
+.animate-loser-text {
+    animation: pulse 1.5s infinite;
+}
+
+.loser-gif {
+    width: 300px;
+    height: auto;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

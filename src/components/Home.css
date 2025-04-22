@@ -1,0 +1,51 @@
+.home-container{
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background video style */
+.background-video-home{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Makes the video cover the entire container */
+  z-index: 0;
+}
+
+/* Overlay content on top of the video */
+.overlay-content-home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+.play-now{
+  cursor: pointer;
+}
+
+/* Bigger button and margin tweak */
+.play-now-image {
+  margin-top: 450px;
+  margin-left: 70px;
+  width: 340px;
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.play-now-image:hover{
+  transform: scale(1.1);
+}

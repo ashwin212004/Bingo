@@ -1,0 +1,212 @@
+/* Video background styling */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+/* Flex container for Bingo and Chat */
+.game-content {
+  display: flex;
+  gap: 215px; /* Space between Bingo board and Chat box */
+  margin-top: 20px;
+  margin-left: 300px;
+
+}
+
+/* Bingo container */
+.bingo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 200px;
+}
+
+/* Chat box alignment */
+.chat-container {
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Overlay for content */
+.overlay {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+/* Adjust container */
+.game-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bingo board styling */
+
+.bingo-board {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  gap: 10px;
+}
+
+.cell {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+}
+/* Add these new classes to your existing PWF.css file */
+.marked-by-me {
+  background-color: #4CAF50; /* Green color for cells marked by the current user */
+  color: white;
+  font-weight: bold;
+}
+
+.marked-by-others {
+  background-color: #f44336; /* Red color for cells marked by other players */
+  color: white;
+}
+.cell.marked {
+  background-color: gray;
+  color: white;
+}
+
+.cell.marked-own {
+  background-color: red;
+  color: white;
+}
+
+.opponent-mark{
+  background-color: rgba(0, 128, 0, 0.6);
+  text-decoration: line-through;
+}
+
+/* Emoji sidebar */
+.emoji-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.emoji-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emoji-button {
+  font-size: 24px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.emoji-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.emoji-display {
+  margin-bottom: 20px;
+}
+
+.emoji-bubble {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.emoji-gif {
+  width: 35px;
+  height: 35px;
+}
+
+
+/* Chat box */
+
+.chat-messages {
+  height: 250px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  margin-bottom: 5px;
+}
+
+.chat-input-container {
+  display: flex;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.chat-send-button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Exit button */
+.exit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background-color: darkred;
+}
+
+/* Player list */
+.player-list {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.player-list p {
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.highlight {
+  border: 2px solid yellow;
+}

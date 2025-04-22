@@ -1,0 +1,135 @@
+/* Reset defaults */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container for the leaderboard page */
+.leaderboard-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Start at the top */
+}
+
+/* Background video styles */
+.background-video-lead {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5) blur(2px);
+}
+
+/* Overlay content on top of video */
+.overlay-leaderboard {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 40px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* Leaderboard Title */
+.overlay-leaderboard h1 {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 3.5rem;
+    color: #ffe784;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-shadow: 0 0 10px #ffe784;
+}
+
+/* Table Styles */
+.leaderboard-table {
+    width: 90%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+/* Table Head */
+.leaderboard-table thead {
+    background-color: rgba(0, 255, 255, 0.3);
+}
+
+.leaderboard-table th {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+/* Table Body */
+.leaderboard-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+}
+
+.leaderboard-table td {
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Add a different color for top ranks */
+.leaderboard-table tbody tr:nth-child(1) td {
+    color: #ffd700; /* Gold */
+    font-weight: bold;
+}
+
+.leaderboard-table tbody tr:nth-child(2) td {
+    color: #c0c0c0; /* Silver */
+    font-weight: bold;
+}
+
+.leaderboard-table tbody tr:nth-child(3) td {
+    color: #cd7f32; /* Bronze */
+    font-weight: bold;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .overlay-leaderboard h1 {
+        font-size: 2.5rem;
+    }
+
+    .leaderboard-table th, .leaderboard-table td {
+        padding: 12px 10px;
+        font-size: 1rem;
+    }
+}
+
+/* Glowing text animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+    to {
+        text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+}
