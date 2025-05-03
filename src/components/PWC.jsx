@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './PWC.css';
-import backgroundofpwc from './gm.mp4';
-import win from './ce.gif';
-import losse from './cry1.gif';
+
 
 function PWC() {
     const [bingoNumbers, setBingoNumbers] = useState([]);
@@ -18,7 +16,7 @@ function PWC() {
     const fetchUserCoins = async () => {
         try {
             const userId = localStorage.getItem('userId');
-            const res = await axios.get(`http://localhost:3001/get-coins/${userId}`);
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASEURL}/get-coins/${userId}`);
             if (res.data.coin) {
                 setCoins(res.data.coin);
             } else if (res.data.coins) {
@@ -32,7 +30,7 @@ function PWC() {
     useEffect(() => {
         const startGame = async () => {
             try {
-                const res = await axios.post("http://localhost:3001/api/games", {
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASEURL}/api/games`, {
                     playerId: localStorage.getItem('userId')
                 });
                 setGameId(res.data._id);
@@ -88,7 +86,7 @@ function PWC() {
         setCurrentTurn("computer");
 
         try {
-            const res = await axios.post(`http://localhost:3001/api/games/${gameId}/call-number`, {
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASEURL}/api/games/${gameId}/call-number`, {
                 number,
                 turn: "player"
             });
@@ -115,7 +113,7 @@ function PWC() {
 
     const handleComputerMove = async () => {
         try {
-            const res = await axios.post(`http://localhost:3001/api/games/${gameId}/computer-move`);
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_BASEURL}/api/games/${gameId}/computer-move`);
 
             setBingoNumbers(res.data.board);
             setMarkedNumbers(new Set(res.data.board.filter(cell => cell.markedBy !== null)));
@@ -153,7 +151,7 @@ function PWC() {
     return (
         <div className="pwc-container">
             <video autoPlay muted loop className="background-video-pwc">
-                <source src={backgroundofpwc} type="video/mp4" />
+                <source src='/gm.mp4' type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
@@ -205,7 +203,7 @@ function PWC() {
                         <div className="winner-overlay">
                             <h1 className="winner-text animate-winner-text">🎉 YOU WON! 🎉</h1>
                             <img
-                                src={win}
+                                src='/ce.gif'
                                 alt="Celebration"
                                 className="winner-gif"
                             />
@@ -221,7 +219,7 @@ function PWC() {
         <div className="loser-overlay">
             <h1 className="loser-text animate-loser-text">😞 YOU LOSE! 😞</h1>
             <img
-                src={losse} // You can use another GIF if you have a sad one
+                src='/cry1.gif' // You can use another GIF if you have a sad one
                 alt="Game Over"
                 className="loser-gif"
             />

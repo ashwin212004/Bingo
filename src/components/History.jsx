@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./History.css"; // Import the styles
-import bgVideo from "./bgfall.mp4"; // Assuming the video is in the same folder
 
 function History() {
     const [history, setHistory] = useState([]);
@@ -15,7 +14,7 @@ function History() {
                     console.error("Missing playerId or username in localStorage");
                     return;
                 }
-                const res = await axios.get(`http://localhost:3001/history/${playerId}/${username}`);
+                const res = await axios.get(`${process.env.REACT_APP_BACKEND_BASEURL}/history/${playerId}/${username}`);
                 setHistory(res.data);
             } catch (error) {
                 console.error("Error fetching history:", error.response?.data || error.message);
@@ -27,7 +26,7 @@ function History() {
     return (
         <div className="history-container">
             <video className="background-video-hist" autoPlay loop muted>
-                <source src={bgVideo} type="video/mp4" />
+                <source src="/bgfall.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 

@@ -6,7 +6,7 @@
     box-sizing: border-box;
     color: #ffffff;
     font-family: 'Arial', sans-serif;
-    background-image: url('./dash.png'); /* Add your background image path here */
+    background-image:'/dashbo.png';
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

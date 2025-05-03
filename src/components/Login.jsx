@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
-import backgroundsign from './silo.mp4'; // Using the same video as signup
 
 function Login() {
     const [name, setName] = useState('');
@@ -13,7 +12,7 @@ function Login() {
         event.preventDefault();
         console.log({ name, password });
 
-        const url = 'http://localhost:3001/login';
+        const url = `${process.env.REACT_APP_BACKEND_BASEURL}/login`;
         const data = { name, password };
 
         axios.post(url, data)
@@ -38,7 +37,7 @@ function Login() {
         <div className="login-container">
             {/* Background Video */}
             <video autoPlay muted loop className="background-video-login">
-                <source src={backgroundsign} type="video/mp4" />
+                <source src='/silo.mp4' type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 

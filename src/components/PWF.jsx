@@ -2,21 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import "./PWF.css";
-import laugh from './laugh.gif';
-import cry from './cry1.gif';
-import celb from './celb.gif';
-import clap from './clap.gif';
-import think from './think.gif';
-import backgroundofpwf from './bgfall.mp4';
-
-const socket = io("http://localhost:3001");
+const socket = io(`${process.env.REACT_APP_BACKEND_BASEURL}`);
 
 const emojiGifMap = {
-    "😀": laugh,
-    "🥳": celb,
-    "🤔": think,
-    "😢": cry,
-    "👏": clap
+    "😀":'/laugh.gif',
+    "🥳": '/celb.gif',
+    "🤔": '/think.gif',
+    "😢": '/cry1.gif',
+    "👏": '/clap.gif'
 };
 
 const PWF = () => {
@@ -128,7 +121,7 @@ const PWF = () => {
     return (
         <>
           <video autoPlay muted loop className="background-video">
-            <source src={backgroundofpwf} type="video/mp4" />
+            <source src='/bgfall.mp4' type="video/mp4" />
             Your browser does not support the video tag.
           </video>
       

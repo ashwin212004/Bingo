@@ -4,9 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaRankingStar } from "react-icons/fa6";
 import io from 'socket.io-client';
-import background from './dhh.mp4';
 
-const socket = io("http://localhost:3001");
+const socket = io(`${process.env.REACT_APP_BACKEND_BASEURL}`);
 
 function Dashboard() {
     const [coins, setCoins] = useState(0);
@@ -28,7 +27,7 @@ function Dashboard() {
 
     useEffect(() => {
         if (userId) {
-            const url = `http://localhost:3001/get-coins/${userId}`;
+            const url = `${process.env.REACT_APP_BACKEND_BASEURL}/get-coins/${userId}`;
             axios.get(url)
                 .then((res) => {
                     if (res.data.coin) {
@@ -72,7 +71,7 @@ function Dashboard() {
             }
 
             try {
-                await axios.post("http://localhost:3001/deduct-coins", { userId, amount: 5 });
+                await axios.post(`${process.env.REACT_APP_BACKEND_BASEURL}/deduct-coins`, { userId, amount: 5 });
                 setCoins(coins - 5);
                 socket.emit("startGame", { roomId });
             } catch (error) {
@@ -95,7 +94,7 @@ function Dashboard() {
                 loop
                 className="background-video-dash"
             >
-                <source src={background} type="video/mp4" />
+                <source src="/dhh.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div className="top-bar">

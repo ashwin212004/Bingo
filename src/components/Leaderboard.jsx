@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import "./Leaderboard.css"; // Import styles
 import { FaRankingStar } from "react-icons/fa6";
-import bgVideoo from "./bgfall.mp4"; 
 
 function Leaderboard() {
     const [leaderboard, setLeaderboard] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/get-leaderboard')
+        axios.get(`${process.env.REACT_APP_BACKEND_BASEURL}/get-leaderboard`)
             .then((res) => {
                 if (res.data.leaderboard) {
                     setLeaderboard(res.data.leaderboard);
@@ -22,7 +21,7 @@ function Leaderboard() {
     return (
         <div className="leaderboard-container">
             <video autoPlay loop muted className="background-video-lead">
-                <source src={bgVideoo} type="video/mp4" />
+                <source src="/bgfall.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
